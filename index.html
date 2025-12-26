@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Tetris</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: black;
+        font-family: Arial, sans-serif;
+        overflow: hidden;
+      }
+
+      .container {
+        position: relative;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      #score {
+        margin-bottom: 0.5rem;
+        font-size: 18px;
+      }
+
+      canvas {
+        touch-action: manipulation;
+      }
+
+      #preview {
+        position: absolute;
+        top: 2rem;
+        right: -100px;
+      }
+
+      #startScreen {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.85);
+        color: white;
+        z-index: 10;
+        text-align: center;
+      }
+
+      #startBtn {
+        margin-top: 1rem;
+        padding: 0.6rem 1.5rem;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      /* ================= MOBILE ================= */
+
+      @media (max-width: 768px) {
+        .container {
+          transform: scale(0.9);
+        }
+
+        #preview {
+          position: static;
+          margin-top: 0.5rem;
+        }
+
+        #score {
+          font-size: 16px;
+        }
+      }
+
+      /* ================= VERY SMALL SCREEN ================= */
+
+      @media (max-width: 480px) {
+        .container {
+          transform: scale(0.8);
+        }
+
+        #score {
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- START / GAME OVER SCREEN -->
+    <div id="startScreen">
+      <h1>TETRIS</h1>
+      <p style="opacity: 0.8; font-size: 14px">
+        Desktop: Keyboard<br />
+        Mobile: Tilt & Tap
+      </p>
+      <button id="startBtn">START</button>
+    </div>
+
+    <!-- GAME -->
+    <div class="container">
+      <div id="score">Score: 0</div>
+
+      <canvas id="canvas"></canvas>
+
+      <canvas id="preview" width="80" height="80"></canvas>
+    </div>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
